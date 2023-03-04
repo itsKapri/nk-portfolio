@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #ffffff;
+    text-align: left;
+    background-image: linear-gradient(270deg,rgb(27 20 41),#140f23);
+    /* background-image: url(assesta/home-bg.jpg);
+    background-size: cover; */
+}
+
+.about-img {
+    margin-left: -100px;
+    right: -60px;
+}
+
+.btn {
+    background-color: purple;
+    color: white!important;
+    padding: 10px 25px;
+    border-radius: 100px;
+}
+.btn:hover{
+    background-color: rgb(113, 9, 182);
+    color: white!important;
+
+}
+
+.typed-cursor {
+    font-size: 45px;
+    color: #b602df;
+}
+.py-5 {
+    padding-top: 3rem!important;
+    padding-bottom: 3rem!important;
+}
+.flex-head-line{
+    display: flex;
+    justify-content: center;
+    /* border:2px solid #ad1e1e; */
+}
+.home-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.project-heading {
+    color:white!important;
+    font-size: 2.3em!important;
+    font-weight: 500!important;
+    padding-top: 10px!important;
+}
+.project-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-name{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+.project-card-view {
+    box-shadow: 0 4px 5px 3px rgba(119,53,136,.459)!important;
+    color: white!important;
+    background-color: transparent!important;
+    opacity: .9!important;
+    transition: all .5s ease 0s!important;
+    height: 100%!important;
+}
+.card-img-top {
+    padding: 20px!important;
+    opacity: .8!important;
+    border-radius: 10px!important;
+}
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+.project-card {
+    padding: 50px 25px!important;
+    height: auto!important;
+}
+.fs-6 {
+    font-size: 2rem!important;
+}
+.purple{
+    color:purple;
+}
+.navbar-brand,.nav-item{
+    color: #fff!important;
+}
+.navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
+    color: #fff;
+}
+.shadow{
+    border-radius: 20px!important;
+    box-shadow: 0 0 30px purple!important;
+}
+.nav-item:hover{
+    border-bottom: 2px solid rgb(234, 14, 14)!important;
+    color: white!important;
+   
+}
+.navbar-brand:hover{
+    color: #fff!important;
+    
+}
+.blur{
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}

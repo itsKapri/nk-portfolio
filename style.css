@@ -114,7 +114,7 @@ body {
 }
 .shadow{
     border-radius: 20px!important;
-    box-shadow: 0 0 30px purple!important;
+    box-shadow: 0 0 8px purple!important;
 }
 .nav-item:hover{
     border-bottom: 2px solid rgb(234, 14, 14)!important;

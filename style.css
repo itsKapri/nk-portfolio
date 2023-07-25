@@ -6,7 +6,8 @@ body {
     line-height: 1.5;
     color: #ffffff;
     text-align: left;
-    background-image: linear-gradient(270deg,rgb(27 20 41),#140f23);
+    /* background-image: linear-gradient(270deg,rgb(27 20 41),#140f23); */
+    background-color: hsl(243, 23%, 18%);
     /* background-image: url(assesta/home-bg.jpg);
     background-size: cover; */
 }
@@ -23,7 +24,11 @@ body {
     background-color: rgb(218, 10, 218);
     border-radius: 30px;
 }
-
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .about-img {
     margin-left: -100px;
@@ -41,7 +46,10 @@ body {
     color: white!important;
 
 }
-
+.progress, .progress-stacked {
+    --bs-progress-height: 0.6rem;
+    --bs-progress-bar-bg: purple;  
+}
 .typed-cursor {
     font-size: 45px;
     color: #b602df;
@@ -112,12 +120,12 @@ body {
 .navbar-nav .nav-link.active, .navbar-nav .show>.nav-link {
     color: #fff;
 }
-.shadow{
+/* .shadow{
     border-radius: 20px!important;
     box-shadow: 0 0 8px purple!important;
-}
+} */
 .nav-item:hover{
-    border-bottom: 2px solid rgb(234, 14, 14)!important;
+    /* border-bottom: 2px solid rgb(234, 14, 14)!important; */
     color: white!important;
    
 }

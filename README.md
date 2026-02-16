@@ -1,30 +1,20 @@
-Nilesh Kapri portfolio
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
+
+# Run and deploy your AI Studio app
+
+This contains everything you need to run your app locally.
+
+View your app in AI Studio: https://ai.studio/apps/temp/1
+
+## Run Locally
+
+**Prerequisites:**  Node.js
 
 
-<h2 align="center">
-  Portfolio Website<br/>
-  <a href="https://itskapri.github.io/nk-portfolio/" target="_blank">Nilesh Kapri</a>
-</h2>
-
-
-## Built With
-
-My personal portfolio <a href="https://itskapri.github.io/nk-portfolio/" target="_blank">Nilesh Kapri</a> which features some of my github projects as well as my resume and technical skills.<br/>
-
-This project was built using.
-
-- Html
-- CSS
-- Bootstrap 5
-- JavaScript
-
-## Features
-- **Fully Responsive**
-
-## Getting Started
-
-Clone down this repository. You will need `bootstarp` and `git` installed on your machine.
-
-
-
-### If You Like give ⭐
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`

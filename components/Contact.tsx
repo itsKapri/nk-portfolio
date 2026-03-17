@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, MapPin, Loader2, CheckCircle2 } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
-import portfolioData from '../src/data/details.json';
+import portfolioData from '../data/details.json';
 
 interface FormState {
   name: string;

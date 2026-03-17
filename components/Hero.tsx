@@ -1,6 +1,6 @@
 import React from 'react';
 import { useInView } from '../hooks/useInView';
-import portfolioData from '../src/data/details.json';
+import portfolioData from '../data/details.json';
 
 const Hero: React.FC = () => {
   const { ref, isInView } = useInView();

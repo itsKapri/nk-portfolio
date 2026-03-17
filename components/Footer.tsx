@@ -1,5 +1,5 @@
 import React from 'react';
-import portfolioData from '../src/data/details.json';
+import portfolioData from '../data/details.json';
 
 const Footer: React.FC = () => {
   const { socialLinks, personal } = portfolioData;

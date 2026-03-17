@@ -2,14 +2,14 @@
     "personal": {
         "name": "NILESH KAPRI",
         "shortName": "N.KAPRI",
-        "title": "Software Engineer | Android & Full Stack Developer",
+        "title": "Software Engineer | Full Stack & Android Developer",
         "resumeUrl": "https://drive.google.com/file/d/1BPO5_Do_1eQ_f0usz5WVVIX5UomT5ALg/view?usp=sharing",
-        "email": "hello@nileshkapri.dev",
-        "location": "San Francisco, CA",
-        "heroTagline": "Building robust architecture and modern UI experiences for the next generation of mobile & web applications.",
+        "email": "workwithnileshkapri@gmail.com",
+        "location": "Mumbai, Maharashtra, India",
+        "heroTagline": "Building robust backend architectures and modern, intuitive UI experiences for next-generation web and mobile applications.",
         "bioParagraphs": [
-            "I am a passionate developer with a deep focus on performance and clean architecture. My approach is rooted in structural integrity and user-centric design.",
-            "From native Android applications using Jetpack Compose to scalable full-stack web solutions, I specialize in transforming complex problems into elegant, maintainable codebases."
+            "I am a Software Engineer with 2.5+ years of experience building scalable web and mobile applications. I focus strongly on performance, scalability, and clean architecture, combining technical excellence with user-centric design.",
+            "From native Android applications using Jetpack Compose to scalable full-stack solutions using React.js and Node.js, I specialize in transforming complex problems into elegant, maintainable, and production-ready codebases."
         ]
     },
     "navigation": [
@@ -28,23 +28,15 @@
     ],
     "techStack": [
         {
-            "icon": "Smartphone",
-            "name": "KOTLIN"
-        },
-        {
-            "icon": "Layers",
-            "name": "JETPACK COMPOSE"
-        },
-        {
             "icon": "Globe",
             "name": "REACT"
         },
         {
-            "icon": "Database",
+            "icon": "Server",
             "name": "NODE.JS"
         },
         {
-            "icon": "Server",
+            "icon": "Database",
             "name": "MONGODB"
         },
         {
@@ -52,21 +44,36 @@
             "name": "TYPESCRIPT"
         },
         {
-            "icon": "Shield",
-            "name": "TYPESCRIPT"
+            "icon": "Code",
+            "name": "JAVASCRIPT"
+        },
+        {
+            "icon": "Layers",
+            "name": "NESTJS"
+        },
+        {
+            "icon": "Cloud",
+            "name": "AWS"
+        },
+        {
+            "icon": "Smartphone",
+            "name": "KOTLIN"
         }
     ],
     "projects": [
         {
-            "title": "Fitness Tracker Pro",
+            "title": "Digital Fan Experience",
             "tags": [
-                "ANDROID",
-                "KOTLIN"
+                "REACT",
+                "TYPESCRIPT",
+                "NODE.JS",
+                "MONGODB",
+                "AWS",
+                "NEST.JS"
             ],
-            "description": "A native Android application utilizing Jetpack Compose and clean architecture for real-time health monitoring.",
+            "description": "The DfanX fan engagement platform builds configurable fan experience mobile apps for sports teams — offering personalized engagement, seamless ticketing, and deeper fan-team connections.",
             "imageUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuCRlzj8Tzkc3N-n8-Qo_hrsqx-z08rcBEDDtvycjeAO3FQDlQqWlhSnx4ZxI7_ZRNm7SywG7p0YGpjktMgQ-ZxuCL-SICPtIV8zq15P3d0OodO6m9K3lsY0DtB88kbaXbm4s6Wg2szwzJHi35uIohs2t2i2TmuIqa0ZXC3_quY3mGZsoXD8hY24eqTWlEJpxmJgvfyD6dKuEEIuQ5jD_1d5TXLgBWND14Yog1ae3Knren6jjsJBXfMulV8TJj02bSu-zZwMNJwjzxw",
-            "githubUrl": "#",
-            "liveUrl": "#"
+            "liveUrl": "https://www.dfanx.com/"
         },
         {
             "title": "Crypto Dashboard",

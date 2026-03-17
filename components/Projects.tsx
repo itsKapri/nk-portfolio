@@ -1,6 +1,6 @@
 import React from 'react';
 import { useInView } from '../hooks/useInView';
-import portfolioData from '../src/data/details.json';
+import portfolioData from '../data/details.json';
 
 const Projects: React.FC = () => {
   const { ref, isInView } = useInView({ threshold: 0.1, triggerOnce: true });
@@ -22,12 +22,33 @@ const Projects: React.FC = () => {
             style={{ transitionDelay: `${index * 150}ms` }}
           >
             <div className="aspect-video bg-gray-200 border-b-4 border-black relative overflow-hidden">
-              <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-20 transition-opacity z-10 duration-300"></div>
-              <img 
-                src={project.imageUrl} 
-                alt={project.title} 
-                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-              />
+              {project.liveUrl ? (
+                <>
+                  <iframe 
+                    src={project.liveUrl} 
+                    title={project.title}
+                    className="w-full h-full border-0 pointer-events-none scale-100 origin-top-left bg-blue"
+                    loading="lazy"
+                    sandbox="allow-scripts allow-same-origin"
+                  />
+                  <a 
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-20 transition-opacity z-10 duration-300 cursor-pointer"
+                    aria-label={`Visit ${project.title}`}
+                  />
+                </>
+              ) : (
+                <>
+                  <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-20 transition-opacity z-10 duration-300"></div>
+                  <img 
+                    src={project.imageUrl} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  />
+                </>
+              )}
             </div>
             <div className="p-6 flex-1 flex flex-col">
               <div className="flex gap-2 mb-4 flex-wrap">
@@ -44,12 +65,22 @@ const Projects: React.FC = () => {
                 {project.description}
               </p>
               <div className="flex gap-4">
-                <a href={project.githubUrl} className="flex-1 py-3 text-center bg-primary text-white font-bold border-4 border-black brutalist-shadow text-sm">
-                  GITHUB
-                </a>
-                <a href={project.liveUrl} className="flex-1 py-3 text-center bg-white text-black font-bold border-4 border-black brutalist-shadow text-sm">
-                  LIVE
-                </a>
+                {project.githubUrl && (
+                  <a 
+                    href={project.githubUrl} 
+                    className={`py-3 text-center bg-primary text-white font-bold border-4 border-black brutalist-shadow text-sm ${project.liveUrl ? 'flex-1' : 'w-full'}`}
+                  >
+                    GITHUB
+                  </a>
+                )}
+                {project.liveUrl && (
+                  <a 
+                    href={project.liveUrl} 
+                    className={`py-3 text-center bg-white text-black font-bold border-4 border-black brutalist-shadow text-sm ${project.githubUrl ? 'flex-1' : 'w-full'}`}
+                  >
+                    LIVE
+                  </a>
+                )}
               </div>
             </div>
           </div>

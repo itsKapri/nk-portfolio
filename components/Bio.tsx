@@ -1,15 +1,15 @@
 import React from 'react';
 import { Smartphone, Layers, Globe, Database, Server, Shield } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
-import portfolioData from '../src/data/details.json';
+import portfolioData from '../data/details.json';
 
-const iconMap: Record<string, React.ReactNode> = {
-  Smartphone: <Smartphone size={40} />,
-  Layers: <Layers size={40} />,
-  Globe: <Globe size={40} />,
-  Database: <Database size={40} />,
-  Server: <Server size={40} />,
-  Shield: <Shield size={40} />,
+const iconMap: Record<string, (className: string) => React.ReactNode> = {
+  Smartphone: (className) => <Smartphone className={className} />,
+  Layers: (className) => <Layers className={className} />,
+  Globe: (className) => <Globe className={className} />,
+  Database: (className) => <Database className={className} />,
+  Server: (className) => <Server className={className} />,
+  Shield: (className) => <Shield className={className} />,
 };
 
 const Bio: React.FC = () => {
@@ -28,19 +28,19 @@ const Bio: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="p-8 md:p-16 bg-black text-white">
+      <div className="p-4 md:p-16 bg-black text-white">
         <h2 className={`text-5xl font-black mb-8 uppercase italic tracking-tighter reveal-hidden stagger-2 ${isInView ? 'reveal-visible' : ''}`}>Tech Stack</h2>
         <div className="grid grid-cols-2 gap-4">
           {techStack.map((tech, index) => (
             <div 
               key={index} 
-              className={`border-4 border-white p-4 flex flex-col items-start gap-4 hover:bg-primary transition-colors cursor-default group reveal-hidden ${isInView ? 'reveal-visible' : ''}`}
+              className={`border-4 border-white p-3 sm:p-4 flex flex-col items-start gap-3 sm:gap-4 hover:bg-primary transition-colors cursor-default group reveal-hidden ${isInView ? 'reveal-visible' : ''}`}
               style={{ transitionDelay: `${index * 50 + 300}ms` }}
             >
               <div className="group-hover:scale-110 transition-transform duration-300">
-                {iconMap[tech.icon] || <Globe size={40} />}
+                {iconMap[tech.icon]?.("w-8 h-8 md:w-10 md:h-10") || <Globe className="w-8 h-8 md:w-10 md:h-10" />}
               </div>
-              <span className="font-black text-xl uppercase leading-none">{tech.name}</span>
+              <span className="font-black text-sm sm:text-lg md:text-xl uppercase leading-none break-words w-full">{tech.name}</span>
             </div>
           ))}
         </div>

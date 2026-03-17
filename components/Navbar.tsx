@@ -1,6 +1,6 @@
 import React from 'react';
 import { Terminal } from 'lucide-react';
-import portfolioData from '../src/data/details.json';
+import portfolioData from '../data/details.json';
 
 const Navbar: React.FC = () => {
   const { navigation, personal } = portfolioData;

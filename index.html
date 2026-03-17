@@ -1,125 +1,547 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NILESH KAPRI | Portfolio</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet" />
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "primary": "#333333",
-              "background-light": "#F5F5F5",
-              "background-dark": "#121212",
-              "error": "#FF0000",
-              "success": "#00CC00"
-            },
-            fontFamily: {
-              "display": ["Inter", "sans-serif"]
-            },
-            borderWidth: {
-              '4': '4px',
-            },
-            borderRadius: {
-              "DEFAULT": "0px",
-              "lg": "0px",
-              "xl": "0px",
-              "full": "9999px"
-            },
-            animation: {
-              'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-              'fade-in': 'fadeIn 0.8s ease-out forwards',
-            },
-            keyframes: {
-              fadeInUp: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              },
-              fadeIn: {
-                '0%': { opacity: '0' },
-                '100%': { opacity: '1' },
-              }
-            }
-          },
-        },
-      }
-    </script>
-    <style type="text/tailwindcss">
-      @layer utilities {
-        html {
-          scroll-behavior: smooth;
-        }
-        .brutalist-shadow {
-          box-shadow: 6px 6px 0px 0px #000000;
-          transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .brutalist-shadow-charcoal {
-          box-shadow: 6px 6px 0px 0px #333333;
-        }
-        .brutalist-shadow:hover {
-          transform: translate(-2px, -2px);
-          box-shadow: 8px 8px 0px 0px #000000;
-        }
-        .brutalist-shadow:active {
-          transform: translate(2px, 2px);
-          box-shadow: 3px 3px 0px 0px #000000;
-        }
-        .brutalist-input {
-          transition: all 0.2s ease;
-        }
-        .brutalist-input:focus {
-          outline: none;
-          border-color: #333333;
-          background-color: #ffffff;
-          box-shadow: 4px 4px 0px 0px #333333;
-        }
-        .brutalist-input.error {
-          border-color: #FF0000;
-          color: #FF0000;
-        }
-        .brutalist-input.error::placeholder {
-          color: #ffb3b3;
-        }
-        .brutalist-input.error:focus {
-          box-shadow: 4px 4px 0px 0px #FF0000;
-        }
-        .grid-bg {
-          background-size: 40px 40px;
-          background-image: radial-gradient(circle, #333333 1px, transparent 1px);
-        }
-        .reveal-hidden {
-          opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-visible {
-          opacity: 1;
-          transform: translateY(0);
-        }
-        .stagger-1 { transition-delay: 100ms; }
-        .stagger-2 { transition-delay: 200ms; }
-        .stagger-3 { transition-delay: 300ms; }
-        .stagger-4 { transition-delay: 400ms; }
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.4/",
-    "react": "https://esm.sh/react@^19.2.4",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.564.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nilesh Kapri – Full Stack Engineer</title>
+  <meta name="description" content="Full Stack Engineer with 2.5+ years building scalable platforms, SDK architectures, and enterprise SaaS systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
-  <body class="bg-background-light font-display text-black selection:bg-primary selection:text-white">
-    <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo"><span class="logo-bracket">&lt;</span>NK<span class="logo-bracket">/&gt;</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#contact" class="nav-link cta-link">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge"><span class="badge-dot"></span><span>Available for opportunities</span></div>
+      <h1 class="hero-title">
+        <span class="hero-greeting">Hi, I'm</span>
+        <span class="hero-name">Nilesh Kapri</span>
+      </h1>
+      <div class="hero-role">
+        <span class="role-prefix">{"role"}: </span>
+        <span class="typed-text" id="typed-text"></span>
+        <span class="cursor-blink">|</span>
+      </div>
+      <p class="hero-description">
+        Full Stack Engineer with <strong>2.5+ years</strong> crafting scalable multi-tenant platforms,
+        SDK architectures & enterprise SaaS systems. Powering experiences for <strong>200K+ users</strong>
+        across NBA teams worldwide.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-card"><span class="stat-number" data-target="2.5">0</span><span>+</span><span class="stat-label">Years Exp.</span></div>
+        <div class="stat-card"><span class="stat-number" data-target="200">0</span><span>K+</span><span class="stat-label">Users/Team</span></div>
+        <div class="stat-card"><span class="stat-number" data-target="10">0</span><span>+</span><span class="stat-label">NBA Teams</span></div>
+        <div class="stat-card"><span class="stat-number" data-target="40">0</span><span>%</span><span class="stat-label">Perf. Boost</span></div>
+      </div>
+      <div class="hero-cta">
+        <a href="#experience" class="btn btn-primary">View My Work</a>
+        <a href="https://drive.google.com/file/d/1FiWWYVnxaOwoKfejgjIUO3IBG40GQENW/view?usp=sharing" target="_blank" rel="noopener" class="btn btn-outline">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          View Resume
+        </a>
+      </div>
+      <div class="hero-socials">
+        <a href="mailto:workwithnileshkapri@gmail.com" class="social-link" title="Email">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/nilesh-kapri" target="_blank" class="social-link" title="LinkedIn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://github.com/itsKapri" target="_blank" class="social-link" title="GitHub">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </a>
+        <a href="https://leetcode.com/Nileshkapri/" target="_blank" class="social-link" title="LeetCode">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/nileshkapri_/" target="_blank" class="social-link" title="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="code-window">
+        <div class="code-window-header">
+          <div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div>
+          <span class="window-title">nilesh.ts</span>
+        </div>
+        <div class="code-content"><pre><code><span class="code-keyword">const</span> <span class="code-var">developer</span> = {
+  <span class="code-prop">name</span>: <span class="code-string">"Nilesh Kapri"</span>,
+  <span class="code-prop">role</span>: <span class="code-string">"Full Stack Engineer"</span>,
+  <span class="code-prop">experience</span>: <span class="code-string">"2.5+ years"</span>,
+  <span class="code-prop">location</span>: <span class="code-string">"Mumbai, India"</span>,
+  <span class="code-prop">stack</span>: [
+    <span class="code-string">"React"</span>, <span class="code-string">"TypeScript"</span>,
+    <span class="code-string">"Node.js"</span>, <span class="code-string">"NestJS"</span>,
+    <span class="code-string">"Next.js"</span>, <span class="code-string">"MongoDB"</span>
+  ],
+  <span class="code-prop">currentFocus</span>: <span class="code-string">"NBA Fan Platforms"</span>,
+  <span class="code-prop">availability</span>: <span class="code-keyword">true</span>
+};</code></pre></div>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator"><div class="scroll-line"></div><span>scroll</span></div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// about me</span>
+        <h2 class="section-title">Who I Am</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm a <strong>Full Stack Engineer</strong> passionate about building products that scale. Currently at <strong>Raw Engineering</strong>, I power the Digital Fan Experience Platform for <strong>10+ NBA teams</strong> including the Chicago Bulls, Miami Heat, and Sacramento Kings.</p>
+          <p>My expertise spans building <strong>Micro-Frontend SDKs</strong>, designing <strong>API aggregation layers</strong>, implementing <strong>RBAC authentication workflows</strong>, and optimizing Next.js applications for peak performance.</p>
+          <p>I love hackathons — I've been a <strong>Top Finalist</strong> at Mumbai Hacks twice, including as part of a Guinness World Record hackathon. I'm driven by clean code and turning complex business logic into elegant solutions.</p>
+          <div class="about-tags">
+            <span class="tag">🚀 Product Ownership</span>
+            <span class="tag">🏗️ System Architecture</span>
+            <span class="tag">⚡ Performance Optimization</span>
+            <span class="tag">🔐 Auth & RBAC</span>
+            <span class="tag">🤖 AI Integration</span>
+            <span class="tag">🏆 Hackathon Finalist</span>
+          </div>
+        </div>
+        <div class="about-education">
+          <div class="education-card">
+            <div class="edu-icon">🎓</div>
+            <div class="edu-content">
+              <h3>Bachelor of Engineering</h3>
+              <h4>Computer Science</h4>
+              <p>University of Mumbai</p>
+              <span class="edu-meta">2019 – 2023 · CGPA: 8.5/10</span>
+              <div class="edu-courses"><span>DSA</span><span>DBMS</span><span>OS</span><span>CN</span><span>Software Eng.</span></div>
+            </div>
+          </div>
+          <div class="award-card">
+            <div class="award-icon">🏅</div>
+            <div class="award-content">
+              <h4>Best Performer Award</h4>
+              <p>DFEP Platform — Raw Engineering</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section skills-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// tech stack</span>
+        <h2 class="section-title">Skills & Technologies</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <div class="skill-cat-header"><span class="skill-cat-icon">⚡</span><h3>Frontend</h3></div>
+          <div class="skill-tags">
+            <span class="skill-tag expert">React.js</span><span class="skill-tag expert">TypeScript</span>
+            <span class="skill-tag expert">Next.js</span><span class="skill-tag advanced">Redux Toolkit</span>
+            <span class="skill-tag advanced">React Query</span><span class="skill-tag advanced">Tailwind CSS</span>
+            <span class="skill-tag intermediate">Material UI</span><span class="skill-tag intermediate">HTML5 / CSS3</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-header"><span class="skill-cat-icon">🖥️</span><h3>Backend</h3></div>
+          <div class="skill-tags">
+            <span class="skill-tag expert">Node.js</span><span class="skill-tag expert">NestJS</span>
+            <span class="skill-tag advanced">Express.js</span><span class="skill-tag advanced">RESTful APIs</span>
+            <span class="skill-tag intermediate">Microservices</span><span class="skill-tag intermediate">GraphQL</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-header"><span class="skill-cat-icon">🗄️</span><h3>Data & Cloud</h3></div>
+          <div class="skill-tags">
+            <span class="skill-tag advanced">MongoDB</span><span class="skill-tag intermediate">Redis</span>
+            <span class="skill-tag intermediate">AWS S3</span><span class="skill-tag intermediate">Cloudinary</span>
+            <span class="skill-tag intermediate">Contentstack CMS</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-cat-header"><span class="skill-cat-icon">🧪</span><h3>Testing & Tools</h3></div>
+          <div class="skill-tags">
+            <span class="skill-tag advanced">Jest</span><span class="skill-tag advanced">React Testing Library</span>
+            <span class="skill-tag intermediate">Mocha Chai</span><span class="skill-tag advanced">Git / GitHub</span>
+            <span class="skill-tag intermediate">Postman</span><span class="skill-tag intermediate">Swagger</span>
+          </div>
+        </div>
+      </div>
+      <div class="skill-legend">
+        <span><span class="legend-dot expert"></span>Expert</span>
+        <span><span class="legend-dot advanced"></span>Advanced</span>
+        <span><span class="legend-dot intermediate"></span>Intermediate</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section experience-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// work history</span>
+        <h2 class="section-title">Professional Experience</h2>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item" data-animate>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="job-header">
+              <div class="job-title-group"><h3>Associate Application Engineer</h3><h4>Raw Engineering</h4></div>
+              <div class="job-meta"><span class="job-date">May 2024 – Present</span><span class="job-location">📍 Mumbai, India</span></div>
+            </div>
+            <div class="job-highlight">
+              <span class="highlight-badge">🏀 NBA Fan Experience Platform</span>
+              <p class="highlight-desc">Powering 10+ NBA teams — Chicago Bulls, Indiana Pacers, Memphis Grizzlies, Miami Heat, Sacramento Kings — serving <strong>200K+ users per team</strong></p>
+            </div>
+            <ul class="job-bullets">
+              <li><span class="bullet-icon">🛠️</span>Built <strong>Fortress Micro-Frontend SDK</strong> enabling JSON-driven UI rendering, eliminating redeployments for UI updates</li>
+              <li><span class="bullet-icon">⚡</span>Designed <strong>API aggregation layer</strong> consolidating multiple Fortress APIs into a single optimized endpoint</li>
+              <li><span class="bullet-icon">🎨</span>Developed dynamic <strong>CMS-driven component rendering</strong> system for real-time UI updates</li>
+              <li><span class="bullet-icon">🔐</span>Implemented <strong>authentication, subscription validation & RBAC</strong> workflows for partner integrations</li>
+              <li><span class="bullet-icon">📈</span>Optimized Next.js with SSR, code splitting & bundle optimization — improving page load by <strong>40%</strong></li>
+              <li><span class="bullet-icon">🏢</span>Contributed to <strong>OPIN Enterprise Portal</strong> — multi-tenant B2B SaaS used by NBA and F1 for 50+ global partner integrations</li>
+              <li><span class="bullet-icon">🤖</span>Defined internal <strong>Cursor AI development rules</strong>, reducing team development time by nearly <strong>50%</strong></li>
+            </ul>
+            <div class="job-tags">
+              <span>React.js</span><span>Next.js</span><span>TypeScript</span><span>NestJS</span>
+              <span>Multi-tenancy</span><span>SDK</span><span>RBAC</span><span>SSR</span>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item" data-animate>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="job-header">
+              <div class="job-title-group"><h3>Software Developer Intern</h3><h4>EDBA (sister of Raw Engineering)</h4></div>
+              <div class="job-meta"><span class="job-date">Sep 2023 – Apr 2024</span><span class="job-location">📍 Mumbai, India</span></div>
+            </div>
+            <ul class="job-bullets">
+              <li><span class="bullet-icon">🎓</span>Developed <strong>ATKT/Revaluation academic module</strong> using ReactJS and GraphQL-based dynamic rendering</li>
+              <li><span class="bullet-icon">📚</span>Built <strong>Library Management SDK</strong> (Frontend + Backend) using Node.js, Express, and MongoDB</li>
+              <li><span class="bullet-icon">🔒</span>Implemented <strong>secure authentication</strong> and optimized REST APIs for cross-platform integrations</li>
+            </ul>
+            <div class="job-tags">
+              <span>React.js</span><span>GraphQL</span><span>Node.js</span><span>Express.js</span><span>MongoDB</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section projects-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// key projects</span>
+        <h2 class="section-title">Featured Projects</h2>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card featured" data-animate>
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon">⚡</div>
+              <span class="project-badge featured-badge">Featured</span>
+            </div>
+            <h3 class="project-title">Fortress Micro-Frontend SDK</h3>
+            <p class="project-desc">Reusable SDK enabling applications to dynamically render UI from JSON configurations. Teams configure screens and components without redeploying — powering NBA team fan experiences.</p>
+            <div class="project-highlights">
+              <div class="project-highlight-item"><span class="highlight-num">10+</span><span class="highlight-text">NBA Teams</span></div>
+              <div class="project-highlight-item"><span class="highlight-num">200K+</span><span class="highlight-text">Users/Team</span></div>
+              <div class="project-highlight-item"><span class="highlight-num">0</span><span class="highlight-text">Redeployments</span></div>
+            </div>
+            <div class="project-impacts">
+              <span>✅ Eliminated redeployment for UI changes</span>
+              <span>✅ Reduced engineering dependency</span>
+              <span>✅ Improved scalability across teams</span>
+            </div>
+            <div class="project-tech"><span>React.js</span><span>TypeScript</span><span>JSON Config</span><span>Next.js</span><span>SDK Design</span></div>
+          </div>
+        </div>
+        <div class="project-card" data-animate>
+          <div class="project-card-inner">
+            <div class="project-header"><div class="project-icon">🗺️</div></div>
+            <h3 class="project-title">Visual Screen Mapper Platform</h3>
+            <p class="project-desc">Internal platform allowing non-technical stakeholders to configure screen layouts visually. Enables dynamic placement of UI components without direct CMS dependency.</p>
+            <div class="project-impacts">
+              <span>✅ Improved product iteration speed</span>
+              <span>✅ Reduced engineering involvement</span>
+              <span>✅ Empowered non-technical teams</span>
+            </div>
+            <div class="project-tech"><span>React.js</span><span>Drag & Drop</span><span>CMS Integration</span><span>TypeScript</span></div>
+          </div>
+        </div>
+        <div class="project-card" data-animate>
+          <div class="project-card-inner">
+            <div class="project-header"><div class="project-icon">🏢</div></div>
+            <h3 class="project-title">OPIN Enterprise Portal</h3>
+            <p class="project-desc">Multi-tenant B2B SaaS platform used by NBA and F1 to manage 50+ global partner integrations with complex RBAC and tenant isolation.</p>
+            <div class="project-impacts">
+              <span>✅ 50+ global partner integrations</span>
+              <span>✅ NBA & F1 clients</span>
+              <span>✅ Full multi-tenancy</span>
+            </div>
+            <div class="project-tech"><span>NestJS</span><span>React.js</span><span>Multi-tenancy</span><span>RBAC</span><span>SaaS</span></div>
+          </div>
+        </div>
+        <div class="project-card hackathon-card" data-animate>
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon">🤖</div>
+              <span class="project-badge hackathon-badge">🏆 Top Finalist</span>
+            </div>
+            <h3 class="project-title">Doctalyzer — AI Document Analysis</h3>
+            <p class="project-desc">Generative AI solution for intelligent document analysis. Combines OCR with OpenAI API. Built at Mumbai Hacks Summer 2023.</p>
+            <div class="project-tech"><span>OpenAI API</span><span>OCR</span><span>React.js</span><span>Node.js</span></div>
+          </div>
+        </div>
+        <div class="project-card hackathon-card" data-animate>
+          <div class="project-card-inner">
+            <div class="project-header">
+              <div class="project-icon">🌀</div>
+              <span class="project-badge hackathon-badge">🏆 Top Finalist</span>
+            </div>
+            <h3 class="project-title">Paradox — AI Project</h3>
+            <p class="project-desc">Built at Mumbai Hacks Summer 2024 — part of a Guinness World Record hackathon with 2,000+ participants. Top 1% performance.</p>
+            <div class="project-tech"><span>AI/ML</span><span>React.js</span><span>Node.js</span><span>OpenAI</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="section achievements-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// milestones</span>
+        <h2 class="section-title">Achievements</h2>
+      </div>
+      <div class="achievements-grid">
+        <div class="achievement-card" data-animate>
+          <div class="achievement-icon">🏆</div>
+          <h3>Mumbai Hacks Summer 2023</h3>
+          <p>Finalist — Developed "Doctalyzer", a generative AI document analysis solution</p>
+        </div>
+        <div class="achievement-card gold" data-animate>
+          <div class="achievement-icon">🌍</div>
+          <h3>Mumbai Hacks Summer 2024</h3>
+          <p>Top Finalist — Built "Paradox" in a Guinness World Record hackathon with 2,000+ participants</p>
+        </div>
+        <div class="achievement-card" data-animate>
+          <div class="achievement-icon">🏅</div>
+          <h3>DFEP Best Performer</h3>
+          <p>Best Performer Award Winner for contributions to the NBA Digital Fan Experience Platform</p>
+        </div>
+        <div class="achievement-card" data-animate>
+          <div class="achievement-icon">⚡</div>
+          <h3>50% Faster Dev Cycles</h3>
+          <p>Defined Cursor AI development rules, reducing team development time by nearly 50%</p>
+        </div>
+        <div class="achievement-card" data-animate>
+          <div class="achievement-icon">📈</div>
+          <h3>40% Performance Boost</h3>
+          <p>Improved NBA app page load times by 40% through Next.js SSR and bundle optimization</p>
+        </div>
+        <div class="achievement-card" data-animate>
+          <div class="achievement-icon">🎮</div>
+          <h3>Active Hackathon Competitor</h3>
+          <p>Competed in Flipkart Grind 2.0, E-Yantra Innovation Challenge, Mumbai Hacks Winter 2023</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">// get in touch</span>
+        <h2 class="section-title">Let's Build Something</h2>
+        <p class="section-sub">Open to full-time roles, freelance projects & collaborations.</p>
+      </div>
+
+      <div class="contact-layout">
+
+        <!-- Message Form -->
+        <div class="contact-form-wrap" data-animate>
+          <div class="form-header">
+            <span class="form-label">// send_message()</span>
+            <h3>Drop Me a Line</h3>
+            <p>I'll get back to you within 24 hours.</p>
+          </div>
+          <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="cf-name">Name</label>
+                <input type="text" id="cf-name" name="name" placeholder="Your name" autocomplete="name" />
+                <span class="form-error" id="err-name"></span>
+              </div>
+              <div class="form-group">
+                <label for="cf-email">Email</label>
+                <input type="email" id="cf-email" name="email" placeholder="you@example.com" autocomplete="email" />
+                <span class="form-error" id="err-email"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cf-subject">Subject</label>
+              <input type="text" id="cf-subject" name="subject" placeholder="What's this about?" />
+            </div>
+            <div class="form-group">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" rows="5" placeholder="Tell me about your project, opportunity, or just say hi 👋"></textarea>
+              <span class="form-error" id="err-message"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              <span id="submit-text">Send Message</span>
+            </button>
+            <div class="form-success" id="form-success">
+              <span>✅ Message sent! I'll reply shortly.</span>
+            </div>
+          </form>
+        </div>
+
+        <!-- Socials Panel -->
+        <div class="contact-socials-panel" data-animate>
+          <div class="socials-panel-header">
+            <span class="form-label">// connect_with_me()</span>
+            <h3>Find Me Online</h3>
+          </div>
+
+          <div class="social-contact-list">
+            <a href="mailto:workwithnileshkapri@gmail.com" class="social-contact-item">
+              <div class="sci-icon-wrap email-bg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="sci-info">
+                <span class="sci-label">Email</span>
+                <span class="sci-value">workwithnileshkapri@gmail.com</span>
+              </div>
+              <svg class="sci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+
+            <a href="tel:+919503543136" class="social-contact-item">
+              <div class="sci-icon-wrap phone-bg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.38 2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.9a16 16 0 0 0 6.16 6.16l1.27-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div class="sci-info">
+                <span class="sci-label">Phone</span>
+                <span class="sci-value">+91 9503543136</span>
+              </div>
+              <svg class="sci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+
+            <a href="https://linkedin.com/in/nilesh-kapri" target="_blank" class="social-contact-item">
+              <div class="sci-icon-wrap linkedin-bg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <div class="sci-info">
+                <span class="sci-label">LinkedIn</span>
+                <span class="sci-value">linkedin.com/in/nilesh-kapri</span>
+              </div>
+              <svg class="sci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+
+            <a href="https://github.com/itsKapri" target="_blank" class="social-contact-item">
+              <div class="sci-icon-wrap github-bg">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              </div>
+              <div class="sci-info">
+                <span class="sci-label">GitHub</span>
+                <span class="sci-value">github.com/itsKapri</span>
+              </div>
+              <svg class="sci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+
+            <a href="https://leetcode.com/Nileshkapri/" target="_blank" class="social-contact-item">
+              <div class="sci-icon-wrap" style="background: rgba(255,161,22,0.15);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+              </div>
+              <div class="sci-info">
+                <span class="sci-label">LeetCode</span>
+                <span class="sci-value">leetcode.com/Nileshkapri</span>
+              </div>
+              <svg class="sci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+
+            <a href="https://www.instagram.com/nileshkapri_/" target="_blank" class="social-contact-item">
+              <div class="sci-icon-wrap" style="background: rgba(225,48,108,0.15);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </div>
+              <div class="sci-info">
+                <span class="sci-label">Instagram</span>
+                <span class="sci-value">@nileshkapri_</span>
+              </div>
+              <svg class="sci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+
+            <a href="https://drive.google.com/file/d/1FiWWYVnxaOwoKfejgjIUO3IBG40GQENW/view?usp=sharing" target="_blank" class="social-contact-item">
+              <div class="sci-icon-wrap" style="background: rgba(66,133,244,0.15);">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              </div>
+              <div class="sci-info">
+                <span class="sci-label">Resume</span>
+                <span class="sci-value">View / Download</span>
+              </div>
+              <svg class="sci-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+
+          <div class="availability-badge">
+            <span class="avail-dot"></span>
+            <div>
+              <strong>Open to Work</strong>
+              <span>Full-time · Freelance · Remote</span>
+            </div>
+          </div>
+
+          <div class="location-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Mumbai, India · IST (UTC+5:30)</span>
+          </div>
+        </div>
+
+      </div><!-- /.contact-layout -->
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <span class="footer-logo"><span class="logo-bracket">&lt;</span>NK<span class="logo-bracket">/&gt;</span></span>
+        <p>Built with ❤️ by <strong>Nilesh Kapri</strong> · Full Stack Engineer · Mumbai, India</p>
+        <p class="footer-copy">© 2024 Nilesh Kapri. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
